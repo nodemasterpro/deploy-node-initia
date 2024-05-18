@@ -26,18 +26,18 @@
         initiad tx mstaking create-validator \
         --amount 1000000uinit \
         --from wallet \
-        --commission-rate 0.1 \
-        --commission-max-rate 0.2 \
+        --commission-rate 0.5 \
+        --commission-max-rate 0.10 \
         --commission-max-change-rate 0.01 \
-        --min-self-delegation 1 \
         --pubkey {{ public_key.stdout }} \
         --moniker "{{ moniker }}" \
         --identity "" \
         --website "{{ website }}" \
         --details "{{ details }}" \
         --chain-id initiation-1 \
-        --gas auto --fees 80000uinit \
-        -y --keyring-backend test
+        --gas=2000000 --fees=300000uinit \
+        --node=http://127.0.0.1:51657/ \
+        -yes
       register: validator_registration
       failed_when: "'failed' in validator_registration.stderr"
       changed_when: true
