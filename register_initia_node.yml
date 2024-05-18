@@ -23,7 +23,7 @@
 
     - name: Register the validator node
       shell: |
-        initiad tx staking create-validator \
+        initiad tx mstaking create-validator \
         --amount 1000000uinit \
         --from wallet \
         --commission-rate 0.1 \
