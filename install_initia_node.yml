@@ -125,11 +125,6 @@
       shell: |
         wget https://initia.s3.ap-southeast-1.amazonaws.com/initiation-1/addrbook.json -O ~/.initia/config/addrbook.json
 
-    - name: Stop Initia Service if running
-      systemd:
-        name: initia-node.service
-        state: stopped
-        enabled: no
 
     - name: Clear Initia data directory
       file:
