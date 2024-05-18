@@ -37,7 +37,7 @@
         --chain-id initiation-1 \
         --gas=2000000 --fees=300000uinit \
         --node=http://127.0.0.1:51657/ \
-        -yes
+        --yes
       register: validator_registration
       failed_when: "'failed' in validator_registration.stderr"
       changed_when: true
