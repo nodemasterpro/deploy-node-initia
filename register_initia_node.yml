@@ -29,7 +29,7 @@
         --commission-rate 0.05 \
         --commission-max-rate 0.10 \
         --commission-max-change-rate 0.01 \
-        --pubkey {{ public_key.stdout }} \
+        --pubkey '{{ public_key.stdout }}' \
         --moniker "{{ moniker }}" \
         --identity "" \
         --website "{{ website }}" \
