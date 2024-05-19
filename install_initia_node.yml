@@ -29,20 +29,29 @@
           - lz4
         state: present
 
-    - name: Install Go
+    - name: Download Go archive
+      ansible.builtin.get_url:
+        url: "https://golang.org/dl/go1.22.3.linux-amd64.tar.gz"
+        dest: "/tmp/go1.22.3.linux-amd64.tar.gz"
+        mode: '0644'
+
+    - name: Extract Go archive
       ansible.builtin.unarchive:
-        src: "https://golang.org/dl/go1.22.3.linux-amd64.tar.gz"
+        src: "/tmp/go1.22.3.linux-amd64.tar.gz"
         dest: "/usr/local"
         remote_src: yes
 
-    - name: Update .bash_profile with Go paths
-      lineinfile:
-        path: "/root/.bash_profile"
-        line: 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin'
-        create: yes
+    - name: Ensure Go is in PATH
+      ansible.builtin.lineinfile:
+        path: ~/.profile
+        regexp: '^export PATH=.*\/usr\/local\/go\/bin.*$'
+        line: 'export PATH=$PATH:/usr/local/go/bin'
+        state: present
 
-    - name: Source .bash_profile
-      shell: . /root/.bash_profile
+    - name: Source profile
+      ansible.builtin.shell: "source ~/.profile"
+      args:
+        executable: /bin/bash
 
     - name: Set file limits in /etc/security/limits.conf
       lineinfile:
