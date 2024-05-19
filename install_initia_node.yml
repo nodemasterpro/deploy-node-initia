@@ -67,7 +67,7 @@
       git:
         repo: "https://github.com/initia-labs/initia.git"
         dest: "~/initia"
-        version: "v0.2.14"
+        version: "v0.2.15"
         force: yes
 
     - name: Remove previously installed Go versions
