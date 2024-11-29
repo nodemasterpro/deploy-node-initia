@@ -1,6 +1,6 @@
 ---
 - name: Remove Initia Node and Clean Up
-  hosts: all
+  hosts: localhost
   become: true
   tasks:
     - name: Stop Initia Service

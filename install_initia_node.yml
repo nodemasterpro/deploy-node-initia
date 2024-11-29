@@ -95,7 +95,7 @@
         mode: '0755'
 
     - name: Initialize Initia Node
-      shell: initiad init {{ moniker }} --chain-id initiation-1
+      shell: initiad init {{ moniker }} --chain-id initiation-1 --force
 
     - name: Download Genesis File
       shell: |
